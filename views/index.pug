@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+  p  Welcome to #{title}
+  .mygrid
+    #moves them moves
+    #held those waiting
+    #cards 
+      .cardgrid#adversaryCards
+        //-
+          div#card1(onclick='removeFirstOption()')
+        div#card1
+        div#card2
+        div#card3
+      .inplay
+        #adversaryplayed
+        #play
+        #playerplayed.cardplayed tt
+      .cardgrid#playerCards
+        div#card1
+        div#card2
+        div#card3
+    #next
+      //-
+        button(onclick='removeFirst()') remove
+      div
+        select#adversaryList
+      div
+        select#playerList
+
