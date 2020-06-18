@@ -46,7 +46,6 @@ function addListenerToCards(cards) {
 function playerSelect(el) {
     if (playerSelection === '' && el.innerHTML != '') {
         playerSelection = el.innerHTML
-        el.classList.add('playerSel')
         player_inplay.innerHTML = playerSelection
         el.innerHTML = ''
         adversarySelect()
@@ -77,9 +76,9 @@ function grantPoint() {
     if (adversaryPoints + playerPoints == 52) {
 
         if (adversaryPoints > playerPoints)
-            msg = 'You LOOSER!!!! '
+            msg = 'You LOOSER!!!! \n'
         else
-            msg = 'You won'
+            msg = 'You won \n'
         if (window.confirm(msg + ' Game is finished. Again?'))
             newDeck();
         else
@@ -98,13 +97,17 @@ function compare() {
     let mystringregex = /[a-z]/
     let advnum = adversarySelection.match(mynumregex)[0]
     let plynum = playerSelection.match(mynumregex)[0]
-    if (plynum != advnum)
-        if (advnum > plynum)
+    if (plynum === advnum){
+        advnum = getIndex(adversarySelection.match(mystringregex)[0])
+        plynum = getIndex(playerSelection.match(mystringregex)[0])
+    }
+
+    if (advnum > plynum)
             adversaryPoints += 2
         else
             playerPoints += 2
-    else {
-        advnum = adversarySelection.match(mystringregex)[0]
-        plynum = playerSelection.match(mystringregex)[0]
-    }
+}
+
+function getIndex(num){
+    return suites.findIndex((el) => el===num )
 }
