@@ -73,19 +73,22 @@ function grantPoint() {
     //console.log(adversarySelection + '::' + playerSelection)
     let msg = ''
     compare()
+    console.log('adversary < ' + adversaryPoints + '::' + playerPoints + ' >player')
+
     if (adversaryPoints + playerPoints == 52) {
 
         if (adversaryPoints > playerPoints)
             msg = 'You LOOSER!!!! \n'
         else
             msg = 'You won \n'
+        if (adversaryPoints === playerPoints)
+            msb = 'TIE \n'
         if (window.confirm(msg + ' Game is finished. Again?'))
             newDeck();
         else
             window.alert('your loss!')
     }
 
-    console.log('adversary < ' + adversaryPoints + '::' + playerPoints + ' >player')
     dealCards(adversary_cards, adversaryDeck)
     dealCards(player_cards, playerDeck)
     playerSelection = ''
@@ -93,21 +96,32 @@ function grantPoint() {
 }
 
 function compare() {
-    let mynumregex = /\d+/
+
     let mystringregex = /[a-z]/
-    let advnum = adversarySelection.match(mynumregex)[0]
-    let plynum = playerSelection.match(mynumregex)[0]
-    if (plynum === advnum){
+    let advnum = parseInt(adversarySelection)
+    let plynum = parseInt(playerSelection)
+
+    if (plynum === advnum) {
         advnum = getIndex(adversarySelection.match(mystringregex)[0])
         plynum = getIndex(playerSelection.match(mystringregex)[0])
     }
 
-    if (advnum > plynum)
-            adversaryPoints += 2
-        else
-            playerPoints += 2
+    if (advnum > plynum) {
+        adversaryPoints += 2
+        addMove('adv')
+    } else {
+        playerPoints += 2
+        addMove('ply')
+    }
 }
 
-function getIndex(num){
-    return suites.findIndex((el) => el===num )
+function getIndex(num) {
+    return suites.findIndex((el) => el === num)
+}
+
+function addMove(style) {
+    let tmp = document.createElement('p')
+    tmp.classList.add(style)
+    tmp.innerHTML=adversarySelection + " - " + playerSelection
+    moves_list.appendChild(tmp)
 }

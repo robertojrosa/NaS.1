@@ -5,11 +5,8 @@ block content
   p  Welcome to #{title}
   .mygrid
     #moves them moves
-    #held those waiting
     #cards 
       .cardgrid#adversaryCards
-        //-
-          div#card1(onclick='removeFirstOption()')
         div#card1
         div#card2
         div#card3
@@ -22,8 +19,6 @@ block content
         div#card2
         div#card3
     #next
-      //-
-        button(onclick='removeFirst()') remove
       div
         select#adversaryList
       div

@@ -35,4 +35,5 @@ function newDeck() {
     mydeck = deck();
     playerDeck = mydeck.player
     adversaryDeck = mydeck.computer
+    moves_list.innerHTML=''
 }
