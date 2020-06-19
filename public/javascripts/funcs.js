@@ -81,8 +81,10 @@ function grantPoint() {
             msg = 'You LOOSER!!!! \n'
         else
             msg = 'You won \n'
+
         if (adversaryPoints === playerPoints)
-            msb = 'TIE \n'
+            msg = 'TIE \n'
+
         if (window.confirm(msg + ' Game is finished. Again?'))
             newDeck();
         else
