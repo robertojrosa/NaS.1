@@ -68,6 +68,10 @@ function adversarySelect() {
     }
 }
 
+function aBitSmarterSelect(){
+    
+}
+
 //grant point does all the rest :)
 function grantPoint() {
     //console.log(adversarySelection + '::' + playerSelection)
