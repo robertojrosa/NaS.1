@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  p  Welcome to #{title}
+  .mygrid
+    #moves them moves
+    #cards 
+      .cardgrid#adversaryCards
+        div#card1
+        div#card2
+        div#card3
+      .inplay
+        #adversaryplayed
+        #play
+        #playerplayed.cardplayed tt
+      .cardgrid#playerCards
+        div#card1
+        div#card2
+        div#card3
+    #next
+      div
+        select#adversaryList
+      div
+        select#playerList
+  script(src='/javascripts/deck.js')
+  script(src='/javascripts/funcs.js')
+  script(src='/javascripts/onload.js')
+  

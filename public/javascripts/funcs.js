@@ -89,7 +89,9 @@ function grantPoint() {
         if (window.confirm(msg + ' Game is finished. Again?'))
             newDeck();
         else
-            window.alert('your loss!')
+            //window.alert('your loss!')
+            window.location='http://localhost:3000'
+            
     }
 
     dealCards(adversary_cards, adversaryDeck)
