@@ -8,5 +8,8 @@ router.get('/', function(req, res, next) {
 router.get('/nas1', function(req, res, next) {
   res.render('nas1', { title: 'Basic card game' });
 });
+router.get('/sockettest', function(req, res, next) {
+  res.render('socket', { title: 'Socket test' });
+});
 
 module.exports = router;
