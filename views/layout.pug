@@ -8,6 +8,16 @@ html
     link(rel='manifest', href='images/fav/site.webmanifest')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
-    script(src='/socket.io/socket.io.js')
-    script(src='/javascripts/socketclient.js')
+   h1= title
+  .maingrid
+    .menuleft
+      p  
+        a(href='/') welcome to #{title}
+      p
+        a(href='nas1') vanilla war like card game
+      p
+        a(href='sockettest') the required socket test
+    .mainContent
+      block content
+  footer
+    p the footer content

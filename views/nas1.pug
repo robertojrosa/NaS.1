@@ -1,8 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p  Welcome to #{title}
+  h2= subtitle
+  p Imagine war (card game without choice) with a bit of a choice.
+  p  The AI isn't smart though, so ... don't loose.
+  p  All is vanilla JS, no libraries or such.
+  br
+  p YOUR CARDS ARE THE 3 BOTTOM ONES! s = spades, h = hearts, c = clubs and d = diamonds <- i really should do something so i do not have to write this line
+  br
   .mygrid
     #moves them moves
     #cards 
@@ -13,7 +18,7 @@ block content
       .inplay
         #adversaryplayed
         #play
-        #playerplayed.cardplayed tt
+        #playerplayed.cardplayed 
       .cardgrid#playerCards
         div#card1
         div#card2

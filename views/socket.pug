@@ -1,6 +1,7 @@
 extends layout
 block content
-  h1= title
-  p  Welcome to #{title}
+  h2= subtitle
+  p  Welcome to #{subtitle}
 
-
+  script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/socketclient.js')

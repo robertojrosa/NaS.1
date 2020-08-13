@@ -27,6 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     addOption(playerList, playerDeck)
     addListenerToCards(player_cards)
     dealCards(adversary_cards, adversaryDeck)
-    dealCards(player_cards, playerDeck)
+    dealCards(player_cards, playerDeck)   
 
 })

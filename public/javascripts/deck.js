@@ -36,4 +36,7 @@ function newDeck() {
     playerDeck = mydeck.player
     adversaryDeck = mydeck.computer
     moves_list.innerHTML=''
+    player_inplay.innerHTML = ''
+    adversary_inplay.innerHTML = ''
+
 }
