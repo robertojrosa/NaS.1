@@ -1,3 +1,6 @@
+.fulltext {
+  text-decoration: underline; }
+
 p, body, h1, div, body {
   margin: 0;
   padding: 0; }
