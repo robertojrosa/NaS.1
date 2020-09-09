@@ -1,5 +1,8 @@
+
 var createError = require('http-errors');
 var express = require('express');
+require('dotenv').config()
+
 const mongoose = require('mongoose')
 var db = require('./mongoose')
 
@@ -14,12 +17,9 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-// mongoose
-const User = require('./models/User')
 
-var mgUsers = User.find().then( (result) => {
-  console.log(result)
-})
+// mongoose
+
 
 
 // view engine setup
