@@ -1,12 +1,6 @@
-.fulltext {
-  text-decoration: underline; }
-
 p, body, h1, div, body {
   margin: 0;
   padding: 0; }
-
-select {
-  visibility: hidden; }
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
@@ -56,6 +50,9 @@ footer {
   text-align: center;
   margin-top: 20px;
   border-top: 1px solid #CCC; }
+
+.cardorder {
+  visibility: hidden; }
 
 .mygrid {
   width: 90%;
