@@ -10,13 +10,7 @@ html
   body
    h1= title
   .maingrid
-    .menuleft
-      p  
-        a(href='/') welcome to #{title}
-      p
-        a(href='nas1') vanilla war like card game
-      p
-        a(href='sockettest') the required socket test
+    include menu
     .mainContent
       block content
   footer

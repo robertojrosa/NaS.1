@@ -1,3 +1,7 @@
 extends layout
 block content
-  p.fulltext jsut index
+  h2 Home
+  p jsut index
+  each val in users
+    p=val.user
+    p ----------------
