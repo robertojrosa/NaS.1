@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+let localfilepath='admin/'
 /* GET home page. */
 router.get('/', function(req, res) {
 
@@ -9,15 +10,19 @@ router.get('/', function(req, res) {
     res.render('index', { title: 'rjrosa', users: result });
   })
  */
-        res.send('hey')
+        res.render(localfilepath+'index')
 });
 
-router.get('/nas1', function(req, res, next) {
-  
-  res.render('nas1', { title: 'rjrosa', subtitle:'simple card game' });
+router.get('/login', function(req, res, next) {
+  res.render(localfilepath  +'login', { title: 'admin area', subtitle:'login area' });
 });
-router.get('/sockettest', function(req, res, next) {
-  res.render('socket', { title: 'rjrosa', subtitle: 'socket test' });
+
+router.post('/login', function(req, res, next) {
+  res.render(localfilepath  +'login', { title: 'admin area', subtitle:'this was a login post' });
+});
+
+router.get('/dashboard', function(req, res, next) {
+  res.render(localfilepath+'dashboard', { title: 'admin area', subtitle: 'Dashboard' });
 });
 
 
