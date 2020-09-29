@@ -2,9 +2,15 @@ extends layout
 block content
   h2=subtitle
   div
-  form(action="login", method="post")
-    div username
-        input.text(type="text")
+  if(params)
+    div=params
+  form(action="login", method="post", enctype="application/json")
+    div.inputname email
     div
-        input(type='submit', value='send')
+      input(type="email", name="email", required)
+    div.inputname password
+    div
+      input(type="password", name="pwd", required)
+    div
+      input(type='submit', value='send')
   

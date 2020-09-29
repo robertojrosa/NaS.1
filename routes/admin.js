@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 let localfilepath='admin/'
+
 /* GET home page. */
 router.get('/', function(req, res) {
 
@@ -17,7 +18,8 @@ router.get('/login', function(req, res, next) {
   res.render(localfilepath  +'login', { title: 'admin area', subtitle:'login area' });
 });
 
-router.post('/login', function(req, res, next) {
+router.post('/login', function(req, res) {
+  console.log(req.params.email)
   res.render(localfilepath  +'login', { title: 'admin area', subtitle:'this was a login post' });
 });
 
