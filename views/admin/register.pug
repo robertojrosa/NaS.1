@@ -1,18 +1,17 @@
 extends layout
 block content
   h2=subtitle
-  if(sysmsg) 
-    .message=sysmsg
   div
-  form(action="login", method="post", enctype="application/json")
+  form(action="register", method="post", enctype="application/json")
     div.inputname email
     div
       input(type="email", name="email", required)
     div.inputname password
     div
       input(type="password", name="pwd", required)
+    div.inputname confirm your password
+    div
+      input(type="password", name="pwd_check", required)
     div
       input(type='submit', value='send')
-    div
-      a(href="/admin/register") register
   
