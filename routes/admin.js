@@ -48,13 +48,30 @@ router.post("/register", (req, res) => {
         sysmsg: "email already registered, please login",
       });
     } else {
-      bcrypt.hash(req.body.pwd, 10, (err, hash) => {
-        console.log(hash);
-      });
-      var postUser = new User({
-        email: req.body.email,
-        pwd: res.send("found none"),
-      });
+      if (req.body.pwd !== req.body.pwd_check)
+        res.render(localFilepath + "register", {
+          title: webArea,
+          subtitle: "register",
+          sysmsg: "passwords do not match",
+        });
+      else {
+        bcrypt.hash(req.body.pwd, 10, (err, hash) => {
+          let postUser = new User({
+            email: req.body.email,
+            pwd: hash,
+          });
+          postUser.save((err) => {
+            if (err) res.send("did not go through");
+            else {
+              res.render(localFilepath + "login", {
+                title: webArea,
+                subtitle: "login",
+                sysmsg: "NEW user created",
+              });
+            }
+          });
+        });
+      }
     }
   });
 });
