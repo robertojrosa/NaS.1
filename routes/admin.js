@@ -8,11 +8,6 @@ const webArea = "admin area";
 
 /* GET home page. */
 router.get("/", function (req, res) {
-  /*   const User = require('../models/User')
-    var mgUsers = User.find().then((result) => {
-      res.render('index', { title: 'rjrosa', users: result });
-    })
-   */
   res.render(localFilepath + "index");
 });
 
