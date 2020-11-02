@@ -1,29 +1,56 @@
 var express = require("express");
 var router = express.Router();
 var bcrypt = require("bcrypt");
-const User = require("../models/User");
+var User = require("../models/User");
+
 
 const localFilepath = "admin/";
-const webArea = "admin area";
+const webArea = "adminArea";
 
-/* GET home page. */
-router.get("/", function (req, res) {
-  res.render(localFilepath + "index");
+// load module
+var aAutho = require ("../middleware/aAutho")
+
+router.get("/", aAutho, function (req, res) {
+    res.render(localFilepath + "dashboard");
 });
 
-router.get("/login", function (req, res, next) {
+router.get("/dashboard", aAutho,  function (req, res) {
+  res.render(localFilepath + "dashboard", {
+    title: "admin area",
+    subtitle: "Dashboard",
+  });
+});
+
+router.get("/login", function (req, res) {
   res.render(localFilepath + "login", {
     title: webArea,
-    subtitle: "login area",
+    subtitle: "loginArea",
   });
 });
 
 router.post("/login", function (req, res) {
-  console.log(req.body);
-  res.render(localFilepath + "login", {
-    title: webArea,
-    subtitle: "this was a login post",
-  });
+  User.findOne({ email: req.body.email })
+    .then((result) => {
+      if (result !== null) {
+        res.render(localFilepath + "login", {
+          title: webArea,
+          subtitle: "post login",
+          sysmsg: "match found" 
+        });
+      } else {
+        res.render(localFilepath + "login", {
+          title: webArea,
+          subtitle: "loginArea",
+          sysmsg: "no match",
+        });
+      }
+    })
+    .catch((err) => {
+      res.json({
+        confirmation: Fail,
+        message: err.message,
+      });
+    });
 });
 
 router.get("/register", function (req, res) {
@@ -35,7 +62,8 @@ router.get("/register", function (req, res) {
 });
 
 router.post("/register", (req, res) => {
-  User.findOne({ email: req.body.email }).then((result) => {
+  User.findOne({ email: req.body.email })
+  .then((result) => {
     if (result !== null) {
       res.render(localFilepath + "login", {
         title: webArea,
@@ -56,7 +84,7 @@ router.post("/register", (req, res) => {
             pwd: hash,
           });
           postUser.save((err) => {
-            if (err) res.send("did not go through");
+            if (err) res.json({ confirmation: "fail", message: err.message });
             else {
               res.render(localFilepath + "login", {
                 title: webArea,
@@ -68,13 +96,6 @@ router.post("/register", (req, res) => {
         });
       }
     }
-  });
-});
-
-router.get("/dashboard", function (req, res, next) {
-  res.render(localFilepath + "dashboard", {
-    title: "admin area",
-    subtitle: "Dashboard",
   });
 });
 

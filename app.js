@@ -16,6 +16,11 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 
+// loading test
+/* var aAuthen = require("./middleware/aAuthen")
+console.log(aAuthen.value)
+ */
+
 var app = express();
 
 
