@@ -1,8 +1,8 @@
 var User = require("../models/User");
 var bcrypt = require("bcrypt");
+const adminWebvars = require("../routes/adminWebvars");
 
-let localFilepath = "admin/";
-let webArea = "adminArea";
+const adminVars = require("../routes/adminWebvars")
 
 module.exports = (req, res) => {
   bcrypt.hash(req.body.pwd, 10, (err, hash) => {
@@ -13,8 +13,8 @@ module.exports = (req, res) => {
     postUser.save((err) => {
       if (err) res.json({ confirmation: "fail", message: err.message });
       else {
-        res.render(localFilepath + "login", {
-          title: webArea,
+        res.render(adminVars.localFilepath + "login", {
+          title: adminVars.webArea,
           subtitle: "login",
           sysmsg: "NEW user created",
         });

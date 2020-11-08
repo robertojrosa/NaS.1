@@ -3,28 +3,29 @@ var router = express.Router();
 var bcrypt = require("bcrypt");
 var User = require("../models/User");
 
-const localFilepath = "admin/";
-const webArea = "adminArea";
-
+const adminVars = require("./adminWebvars")
 // load module
 var aAutho = require("../middleware/aAutho");
 var regNewUser = require("../middleware/registerNewUser");
 var checkNewUser = require("../middleware/checkNewUser");
 
 router.get("/", aAutho, function (req, res) {
-  res.render(localFilepath + "dashboard");
+  res.render(adminVars.localFilepath + "dashboard", {
+    title: adminVars.title,
+    subtitle: "Dashboard",
+  });
 });
 
 router.get("/dashboard", aAutho, function (req, res) {
-  res.render(localFilepath + "dashboard", {
-    title: "admin area",
+  res.render(adminVars.localFilepath + "dashboard", {
+    title: adminVars.title,
     subtitle: "Dashboard",
   });
 });
 
 router.get("/login", function (req, res) {
-  res.render(localFilepath + "login", {
-    title: webArea,
+  res.render(adminVars.localFilepath + "login", {
+    title: adminVars.title,
     subtitle: "loginArea",
   });
 });
@@ -64,8 +65,8 @@ router.post("/login", function (req, res) {
 
 router.get("/register", function (req, res) {
   console.log(req.body);
-  res.render(localFilepath + "register", {
-    title: webArea,
+  res.render(adminVars.localFilepath + "register", {
+    title: adminVars.title,
     subtitle: "registration",
   });
 });

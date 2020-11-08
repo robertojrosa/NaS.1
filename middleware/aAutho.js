@@ -1,15 +1,13 @@
-/* var express = require("express");
-var router = express.Router();
- */
-const localFilepath = "admin/";
-const webArea = "adminArea";
+
+const adminVars = require("../routes/adminWebvars")
+
 
 module.exports = (req, res, next) => {
   if (req.query.autho === "true") {
     next();
   } else console.log("mentira");
-  res.render(localFilepath + "login", {
-    title: "admin area",
+  res.render(adminVars.localFilepath + "login", {
+    title: adminVars.title,
     subtitle: "loginArea",
   });
 };
